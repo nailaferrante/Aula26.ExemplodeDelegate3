@@ -16,11 +16,11 @@ namespace SysLog
                                                     // o resultado será um array de bytes que será convertido para string
             byte[] senhaOriginal;
             byte[] senhaModificada;
-            MD5 md5; // MD é abstrato, classe abstrata não se constrói
+            SHA512 sha; // MD é abstrato, classe abstrata não se constrói
 
             senhaOriginal = Encoding.Default.GetBytes(senha); // Encoding.Default - padrão de caracter o sistema operacional GetByte - retira os bytes e põe na posição, teremos um array de bytes de cada letra
-            md5 = MD5.Create(); // Dentro da classe MD5 existe o método Create que cria a possibilidade de realizar a sua função de encriptografia.
-            senhaModificada = md5.ComputeHash(senhaOriginal);
+            sha = SHA512.Create(); // Dentro da classe MD5 existe o método Create que cria a possibilidade de realizar a sua função de encriptografia.
+            senhaModificada = sha.ComputeHash(senhaOriginal);
             return Convert.ToBase64String(senhaModificada); // ToBase64String - pega cada elemento dentro do array de bytes e converte para string
 
         }
